@@ -6,7 +6,10 @@
 var express = require('express')
   , routes = require('./routes');
 
+var db = require('./modules/db.js').db
+
 var app = module.exports = express.createServer();
+
 
 // Configuration
 

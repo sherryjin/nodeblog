@@ -14,6 +14,15 @@
 .container
   .hero-unit
     h1 This is a "blog." Sort of.
-    p It uses nodejs, express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
-    p
-      a.btn.btn-primary.btn-large(href="#") Lean more >>
+    h2 It uses nodejs, express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
+    br
+    h3 All Posts
+    br
+    each article in articles
+      p.muted= article.content
+      small= "by " + article.author
+      br
+      br
+
+    div
+      a.btn.btn-primary.btn-large(href="#") Learn more >>
