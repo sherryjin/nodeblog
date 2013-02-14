@@ -1,28 +1,18 @@
+extends layout
 
-.navbar.navbar-fixed-top
-  .navbar-inner
-    .container
-      a.brand(href="#")= title
-      .nav-collapse
-        ul.nav
-          li.active
-            a(href="#") Home
-          li
-            a(href="#about") About
-          li
-            a(href="#contact") Contact
-.container
-  .hero-unit
-    h1 This is a "blog." Sort of.
-    h2 It uses nodejs, express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
-    br
-    h3 All Posts
-    br
-    each article in articles
-      p.muted= article.content
-      small= "by " + article.author
+block content
+  .container
+    .hero-unit
+      h1 This is a "blog." Sort of.
+      h2 It uses nodejs, express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
       br
+      h3 All Posts
       br
+      each article in articles
+        p.muted= article.content
+        small= "by " + article.author
+        br
+        br
 
-    div
-      a.btn.btn-primary.btn-large(href="#") Learn more >>
+      div
+        a.btn.btn-primary.btn-large(href="#") Learn more >>
