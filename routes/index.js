@@ -19,3 +19,17 @@ exports.index = function(req, res){
 exports.about = function(req, res){
   res.render('about', { title: 'About'})
 };
+
+exports.new = function(req, res){
+  res.render('new', { title: 'New Post'})
+};
+
+exports.create = function(req, res) {
+  db.articles.save(
+    {author: req.param('author'), content: req.param('content')}, 
+    function(err, saved) {
+      if (err || !saved) console.log("Post not saved");
+      else res.redirect('/');
+    }
+  )
+};
