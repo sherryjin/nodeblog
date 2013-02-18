@@ -9,6 +9,8 @@ block content
       h3 All Posts
       br
       each article in articles
+        a(href="/view")
+          b= article.title
         p.muted= article.content
         small= "by " + article.author
         br
