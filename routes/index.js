@@ -47,9 +47,40 @@ exports.show = function(req, res) {
     if (err) console.log("Could not find article with id of " + id);
     else {
       res.render('show', {
+        title: 'nodejs blog with twitter bootstrap, mongodb, and express',
+        article: article
+      })
+    }
+  })
+};
+
+exports.edit = function(req, res){
+  var id = req.params.id;
+  db.articles.findOne({_id: db.ObjectId(id)}, function(err, article) {
+    if (err) console.log("Could not find article with id of " + id);
+    else {
+      console.log(article.title);
+      console.log(article.content);
+      res.render('edit', {
         title: article.title,
         article: article
       })
     }
   })
+};
+
+exports.update = function(req, res) {
+  var id = req.params.id;
+  db.articles.findAndModify({ 
+    query: { _id: db.ObjectId(id) },
+    update: { $set: { author: req.param('author'), content: req.param('content')}},
+    new: true
+  }, 
+    function(err, article) {
+      if (err) console.log("could not update id: " + article._id);
+      else {
+        res.redirect('/show/' + article._id);        
+      }
+    }
+  )
 };
