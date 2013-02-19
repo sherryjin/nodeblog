@@ -32,6 +32,7 @@ exports.new = function(req, res){
 exports.create = function(req, res) {
   db.articles.save({
     author: req.param('author'), 
+    title: req.param('title'),
     content: req.param('content')
   }, 
     function(err, saved) {
@@ -73,7 +74,7 @@ exports.update = function(req, res) {
   var id = req.params.id;
   db.articles.findAndModify({ 
     query: { _id: db.ObjectId(id) },
-    update: { $set: { author: req.param('author'), content: req.param('content')}},
+    update: { $set: { author: req.param('author'), title: req.param('title'), content: req.param('content')}},
     new: true
   }, 
     function(err, article) {
