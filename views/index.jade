@@ -2,19 +2,30 @@ extends layout
 
 block content
   .container
-    .hero-unit
-      h1 This is a "blog." Sort of.
-      h2 It uses nodejs, express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
-      br
-      h3 All Posts
-      br
-      each article in articles
-        a(href="/show/" + article._id)
-          b= article.title
-        p.muted= article.content
-        small= "by " + article.author
-        br
-        br
+    .container-fluid
+      .row-fluid
+        .hero-unit
+          img(class='floatRight', src='images/ya_callback.jpeg')
+          center
+            h1 Yet another nodejs blog.
+            h2 It uses express, mongodb, twitter-bootstrap, and all the sexy buzzwords.
+            h3 This shit looks good on mobile, yo.
+      .row-fluid
+        .span2.sidebar
+          h3 Sidebar
+          p I thought what I'd do was, I'd pretend I was one of those deaf-mutes. That way I wouldn't have to have any goddam stupid useless conversation with anybody. If anybody wanted to tell me something,
+            they'd have to write it on a piece of paper and shove it over to me. They'd get bored as hell doing
+            that after a while, and then I'd be through with having conversations for the rest of my life.
+        .span10.mainbar
+          h3 All Posts
+          br
+          each article in articles
+            a(href="/show/" + article._id)
+              b= article.title
+            p= article.content
+            small= "by " + article.author
+            br
+            br
 
-      div
-        a.btn.btn-primary.btn-large(href="/new") New Post >>
+          div
+            a.btn.btn-primary.btn-large(href="/new") New Post >>

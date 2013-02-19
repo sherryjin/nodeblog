@@ -2,9 +2,8 @@ extends layout
 
 block content
   .container
-    .hero-unit
-      h1= article.title
-      small= "by " + article.author
-      p= article.content
+    h1= article.title
+    small= "by " + article.author
+    p= article.content
     div
       a.btn.btn-primary.btn-large(href="/edit/" + article._id) Edit >>
