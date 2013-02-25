@@ -8,5 +8,5 @@ exports.routes = function(app, controllers) {
   app.post('/create', controllers.create);
   app.get('/show/:id', controllers.show);
   app.get('/edit/:id', controllers.edit);
-  app.post('/update/:id', controllers.update);
+  app.put('/update/:id', controllers.update);
 }
