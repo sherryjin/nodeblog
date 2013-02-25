@@ -22,6 +22,9 @@ app.configure(function(){
 app.use(express.compiler({ src : __dirname + '/public', enable: ['less']}));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(function(req, res, next) {
+    res.send('Sorry ' + req.url + " does not exist.");
+  });
 });
 
 app.configure('development', function(){
