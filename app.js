@@ -4,7 +4,8 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
+  ,  controllers = require('./controllers'),
+  router = require('./routes');
 
 var db = require('./modules/db.js').db
 
@@ -46,15 +47,7 @@ express.compiler.compilers.less.compile = function(str, fn){
   } catch (err) {fn(err);}
 }
 
-// Routes
-
-app.get('/', routes.index);
-app.get('/about', routes.about);
-app.get('/new', routes.new);
-app.post('/create', routes.create);
-app.get('/show/:id', routes.show);
-app.get('/edit/:id', routes.edit);
-app.post('/update/:id', routes.update);
+router.routes(app, controllers);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
