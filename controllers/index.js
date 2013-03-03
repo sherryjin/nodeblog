@@ -33,7 +33,7 @@ exports.new = function(req, res){
 
 exports.create = function(req, res) {
   db.articles.save({
-    author: req.param('author'), 
+    author: req.user.username, 
     title: req.param('title'),
     content: req.param('content')
   }, 
@@ -62,8 +62,6 @@ exports.edit = function(req, res){
   db.articles.findOne({_id: db.ObjectId(id)}, function(err, article) {
     if (err) console.log("Could not find article with id of " + id);
     else {
-      console.log(article.title);
-      console.log(article.content);
       res.render('edit', {
         title: article.title,
         article: article
@@ -76,7 +74,7 @@ exports.update = function(req, res) {
   var id = req.params.id;
   db.articles.findAndModify({ 
     query: { _id: db.ObjectId(id) },
-    update: { $set: { author: req.param('author'), title: req.param('title'), content: req.param('content')}},
+    update: { $set: { author: req.user.username, title: req.param('title'), content: req.param('content')}},
     new: true
   }, 
     function(err, article) {

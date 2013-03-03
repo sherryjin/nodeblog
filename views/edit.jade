@@ -2,12 +2,10 @@ extends layout
 
 block content
   .container
-    h2 New Post
+    h2 Edit Post
     div
       form(action='/update/' + article._id, method='post')
         input(type='hidden',value='put',name='_method')
-        label(for='author') Author:
-        input(id='author',type='text',value='#{article.author}',name='author')
         label(for='title') Title:
         input(id='title',type='text',value='#{article.title}',name='title')
         label(for='content') Content:
