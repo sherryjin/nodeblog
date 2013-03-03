@@ -85,3 +85,16 @@ exports.update = function(req, res) {
     }
   )
 };
+
+
+exports.new_session = function(req,res) {
+  res.render('new_session', { 
+    title: 'Login'
+  })
+}
+
+exports.create_session = function(req,res) {
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+}
