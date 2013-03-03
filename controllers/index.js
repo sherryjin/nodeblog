@@ -5,6 +5,8 @@
 
 var db = require('../modules/db.js').db;
 
+var passport = require('../modules/passport.js').passport;
+
 exports.index = function(req, res){
   db.articles.find(function (err, articles) {
     if (err) console.log("Could not find any articles!");
@@ -91,10 +93,8 @@ exports.new_session = function(req,res) {
   res.render('new_session', { 
     title: 'Login'
   })
-}
+};
 
 exports.create_session = function(req,res) {
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
-                                   failureFlash: true })
-}
+  res.redirect('/');
+};
